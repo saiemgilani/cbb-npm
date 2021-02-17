@@ -1,6 +1,6 @@
 # cbb-npm
 
-Support for the following data from ESPN's college basketball endpoints:
+Support for the following data from ESPN's college basketball endpoints and recruiting data from 247Sports:
 - play-by-play (including shot location data when available)
 - scores
 - schedule
@@ -104,8 +104,8 @@ const result = await cbb.recruiting.getPlayerRankings({
                     position: "C"
                 });
 
-const result = await cbb.recruiting.getPlayerRankings({
-                    year: 2021,
+const result = await cbb.recruitig.getPlayerRankings({
+                    year: 2020,
                     group: "JuniorCollege"
                 });
 
@@ -113,5 +113,5 @@ const result = await cbb.recruiting.getPlayerRankings({
 const result = await cbb.recruiting.getSchoolRankings(2021);
 
 // get a school's commit list
-const result = await cbb.recruiting.getSchoolCommits('florida-state', 2016);
+const result = await cbb.recruiting.getSchoolCommits('floridastate', 2020);
 ```
