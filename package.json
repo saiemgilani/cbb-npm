@@ -1,6 +1,6 @@
 {
   "name": "cbb-npm",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Retrieves college basketball data from a popular sports website",
   "main": "server.js",
   "directories": {

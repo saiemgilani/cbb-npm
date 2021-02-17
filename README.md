@@ -10,7 +10,7 @@ Support for the following data from ESPN's college basketball endpoints:
 # Installation
 
 ```
-npm install cfb-npm
+npm install cbb-npm
 ```
 
 # Usage
