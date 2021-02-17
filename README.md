@@ -1,2 +1,8 @@
-# cbb-npm
- NPM module for retrieving college basketball data from a popular sports website
+# cbb-data-npm
+
+Support for the following data from ESPN's college basketball endpoints:
+- play-by-play (including shot location data when available)
+- scores
+- schedule
+- standings
+- rankings

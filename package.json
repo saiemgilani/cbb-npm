@@ -1,0 +1,38 @@
+{
+  "name": "cbb-npm",
+  "version": "1.0.0",
+  "description": "Retrieves college basketball data from a popular sports website",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saiemgilani/cbb-npm.git"
+  },
+  "keywords": [
+    "basketball",
+    "cbb",
+    "statistics",
+    "ncaa",
+    "ncaam"
+  ],
+  "author": "Saiem Gilani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saiemgilani/cbb-npm/issues"
+  },
+  "homepage": "https://github.com/saiemgilani/cbb-npm#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.5"
+  },
+  "devDependencies": {
+    "chai": "^4.3.0",
+    "mocha": "^8.3.0"
+  }
+}
