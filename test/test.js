@@ -233,4 +233,67 @@ describe('Recruiting', () => {
                 done();
             })
     });
+describe('NCAA', () => {
+    var game = 5764053;
+    it('should return a promise for ncaa scoreboard data for a given date', (done) => {
+        app.ncaa.getNcaaScoreboard({
+            sport: 'basketball-men',
+            division: 'd1',
+            year: 2021,
+            month: 02,
+            day: 15
+        })
+            .then((data) => {
+                data.should.exist;
+                data.should.be.json;
+                data.should.not.be.empty;
+                done();
+            })
+    });
+    it('should return a promise for ncaa game information for a given game', (done) => {
+            app.ncaa.getNcaaGameInfo(game)
+                .then((data) => {
+                    data.should.exist;
+                    data.should.be.json;
+                    data.should.not.be.empty;
+                    done();
+                })
+        });
+    it('should return a promise for ncaa game box score for a given game', (done) => {
+            app.ncaa.getNcaaGameBoxScore(game)
+                .then((data) => {
+                    data.should.exist;
+                    data.should.be.json;
+                    data.should.not.be.empty;
+                    done();
+                })
+        });
+    it('should return a promise for ncaa game play-by-play for a given game', (done) => {
+            app.ncaa.getNcaaGamePlayByPlay(game)
+                .then((data) => {
+                    data.should.exist;
+                    data.should.be.json;
+                    data.should.not.be.empty;
+                    done();
+                })
+        });
+    it('should return a promise for ncaa game team stats for a given game', (done) => {
+            app.ncaa.getNcaaGameTeamStats(game)
+                .then((data) => {
+                    data.should.exist;
+                    data.should.be.json;
+                    data.should.not.be.empty;
+                    done();
+                })
+        });
+    it('should return a promise for ncaa game scoring summary for a given game', (done) => {
+            app.ncaa.getNcaaGameScoringSummary(game)
+                .then((data) => {
+                    data.should.exist;
+                    data.should.be.json;
+                    data.should.not.be.empty;
+                    done();
+                })
+        });
+    });
 });

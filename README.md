@@ -104,7 +104,7 @@ const result = await cbb.recruiting.getPlayerRankings({
                     position: "C"
                 });
 
-const result = await cbb.recruitig.getPlayerRankings({
+const result = await cbb.recruiting.getPlayerRankings({
                     year: 2020,
                     group: "JuniorCollege"
                 });
@@ -114,4 +114,33 @@ const result = await cbb.recruiting.getSchoolRankings(2021);
 
 // get a school's commit list
 const result = await cbb.recruiting.getSchoolCommits('floridastate', 2020);
+```
+# NCAA Data
+```
+// acceptable sport names:
+// ['basketball-women','soccer-men','soccer-women','fieldhockey',
+//  'volleyball-women','icehockey-men','icehockey-women','baseball',
+//  'beach-volleyball', 'lacrosse-men','lacrosse-women', 'volleyball-men']
+// get ncaa scoreboard data for sport from above list(default: 'basketball-men')
+const result = await cbb.ncaa.getNcaaScoreboard({
+    sport = 'basketball-men',
+    division = 'd1', // 'fbs' for football
+    year = 2020,
+    month = null,
+    day = null
+})
+// NCAA game information for a given game id
+const result = await cbb.ncaa.getNcaaGameInfo(5764053);
+
+// NCAA box score for a given game id
+const result = await cbb.ncaa.getNcaaGameBoxScore(5764053);
+
+// NCAA play-by-play for a given game id
+const result = await cbb.ncaa.getNcaaGamePlayByPlay(5764053);
+
+// NCAA game team stats for a given game
+const result = await cbb.ncaa.getNcaaGameTeamStats(5764053);
+
+// NCAA game scoring summary for a given game
+const result = await cbb.ncaa.getNcaaGameScoringSummary(5764053);
 ```

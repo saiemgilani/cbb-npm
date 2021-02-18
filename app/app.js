@@ -5,3 +5,4 @@ exports.scoreboard = require('./services/scoreboard.service');
 exports.recruiting = require('./services/recruiting.service');
 exports.teams = require('./services/team.service');
 exports.schedule = require('./services/schedule.service');
+exports.ncaa = require('./services/ncaa.service');

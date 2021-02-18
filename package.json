@@ -1,7 +1,7 @@
 {
   "name": "cbb-npm",
-  "version": "1.0.3",
-  "description": "Retrieves college basketball data from a popular sports website",
+  "version": "1.0.4",
+  "description": "Retrieves college basketball data from a popular sports website as well as from the ncaa website, with support for women's basketball as well",
   "main": "server.js",
   "directories": {
     "test": "test"
@@ -17,6 +17,23 @@
   "keywords": [
     "basketball",
     "cbb",
+    "college basketball",
+    "hoops",
+    "women's basketball",
+    "men's basketball",
+    "ncaa-w",
+    "basketball women",
+    "soccer-men",
+    "soccer-women",
+    "field hockey",
+    "volleyball women",
+    "ice hockey men",
+    "ice hockey women",
+    "baseball",
+    "beach volleyball",
+    "lacrosse men",
+    "lacrosse women",
+    "volleyball men",
     "statistics",
     "ncaa",
     "ncaam"
