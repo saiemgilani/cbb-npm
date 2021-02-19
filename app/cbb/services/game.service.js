@@ -19,7 +19,6 @@ exports.getPlayByPlay = async (id) => {
         plays: res.data.gamepackageJSON.plays,
         competitions: res.data.gamepackageJSON.header.competitions,
         season: res.data.gamepackageJSON.header.season,
-        week: res.data.gamepackageJSON.header.week,
         boxScore: res.data.gamepackageJSON.boxscore
     };
 };
@@ -61,6 +60,32 @@ exports.getSummary = async (id) => {
         winProbability: res.data.winprobability,
         header: res.data.header,
         plays: res.data.plays,
+        standings: res.data.standings
+    };
+};
+
+exports.getPicks = async (id) => {
+    const baseUrl = 'http://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/summary';
+    const params = {
+        event: id
+    };
+
+    const res = await axios.get(baseUrl, {
+        params
+    });
+
+    return {
+        id: parseInt(res.data.header.id),
+        gameInfo: res.data.gameInfo,
+        leaders: res.data.leaders,
+        header: res.data.header,
+        teams: res.data.header.competitions[0].competitors,
+        competitions: res.data.header.competitions,
+        winProbability: res.data.winprobability,
+        pickcenter: res.data.winprobability,
+        againstTheSpread: res.data.againstTheSpread,
+        odds: res.data.odds,
+        season: res.data.header.season,
         standings: res.data.standings
     };
 };

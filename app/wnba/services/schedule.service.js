@@ -4,13 +4,13 @@ const getSchedule = async ({
     year = null,
     month = null,
     day = null,
-    groups = null,
+    group = 59,
     seasontype = null
 }) => {
     const baseUrl = 'http://cdn.espn.com/core/wnba/schedule';
     const params = {
         dates: year+""+month+""+day,
-        group: groups,
+        group: group,
         seasontype: seasontype,
         xhr: 1
     };
@@ -18,7 +18,7 @@ const getSchedule = async ({
     const res = await axios.get(baseUrl, {
         params
     });
-    return res.data;
+    return res.data.content.schedule;
 }
 
 module.exports = {

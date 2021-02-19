@@ -2,9 +2,9 @@ const axios = require('axios');
 
 exports.getStandings = async ({
     year = new Date().getFullYear(),
-    type = 59
+    group = 59
 }) => {
-    const baseUrl = `http://cdn.espn.com/core/wnba/standings/_/season/${year}/group/${type}`;
+    const baseUrl = `http://cdn.espn.com/core/wnba/standings/_/season/${year}/group/${group}`;
 
     const params = {
         xhr: 1,

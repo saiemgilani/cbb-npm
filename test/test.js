@@ -174,7 +174,65 @@ describe('CBB Standings', () => {
             });
     });
 });
+describe('CBB Recruiting', () => {
+    it('should return a promise for a list of individual rankings for the given year', (done) => {
+        app.cbbRecruiting.getPlayerRankings({
+                year: 2021
+            })
+            .then((data) => {
+                data.should.exist;
+                data.should.be.json;
+                data.should.not.be.empty;
+                done();
+            })
+    });
 
+    it('should return a promise for a list of individual rankings for the given year and position', (done) => {
+        app.cbbRecruiting.getPlayerRankings({
+                year: 2021,
+                position: "C"
+            })
+            .then((data) => {
+                data.should.exist;
+                data.should.be.json;
+                data.should.not.be.empty;
+                done();
+            })
+    });
+
+    it('should return a promise for a list of individual rankings for the given year and group', (done) => {
+        app.cbbRecruiting.getPlayerRankings({
+                year: 2021,
+                group: "JuniorCollege"
+            })
+            .then((data) => {
+                data.should.exist;
+                data.should.be.json;
+                data.should.not.be.empty;
+                done();
+            })
+    });
+
+    it('should return a promise for a list of school rankings for the given year', (done) => {
+        app.cbbRecruiting.getSchoolRankings(2021)
+            .then((data) => {
+                data.should.exist;
+                data.should.be.json;
+                data.should.not.be.empty;
+                done();
+            })
+    });
+
+    it('should return a promise for a school\'s commit list for a given year', (done) => {
+        app.cbbRecruiting.getSchoolCommits('floridastate', 2021)
+            .then((data) => {
+                data.should.exist;
+                data.should.be.json;
+                data.should.not.be.empty;
+                done();
+            })
+    });
+});
 describe('WBB Games', () => {
     var gameId = 401264909;
 
@@ -347,69 +405,58 @@ describe('WBB Standings', () => {
             });
     });
 });
-
-describe('CBB Recruiting', () => {
-    it('should return a promise for a list of individual rankings for the given year', (done) => {
-        app.cbbRecruiting.getPlayerRankings({
-                year: 2021
-            })
-            .then((data) => {
-                data.should.exist;
-                data.should.be.json;
-                data.should.not.be.empty;
-                done();
-            })
-    });
-
-    it('should return a promise for a list of individual rankings for the given year and position', (done) => {
-        app.cbbRecruiting.getPlayerRankings({
-                year: 2021,
-                position: "C"
-            })
-            .then((data) => {
-                data.should.exist;
-                data.should.be.json;
-                data.should.not.be.empty;
-                done();
-            })
-    });
-
-    it('should return a promise for a list of individual rankings for the given year and group', (done) => {
-        app.cbbRecruiting.getPlayerRankings({
-                year: 2021,
-                group: "JuniorCollege"
-            })
-            .then((data) => {
-                data.should.exist;
-                data.should.be.json;
-                data.should.not.be.empty;
-                done();
-            })
-    });
-
-    it('should return a promise for a list of school rankings for the given year', (done) => {
-        app.cbbRecruiting.getSchoolRankings(2021)
-            .then((data) => {
-                data.should.exist;
-                data.should.be.json;
-                data.should.not.be.empty;
-                done();
-            })
-    });
-
-    it('should return a promise for a school\'s commit list for a given year', (done) => {
-        app.cbbRecruiting.getSchoolCommits('floridastate', 2021)
-            .then((data) => {
-                data.should.exist;
-                data.should.be.json;
-                data.should.not.be.empty;
-                done();
-            })
-    });
-describe('NCAA', () => {
+describe('NCAA Games', () => {
     var game = 5764053;
+    it('should return a promise for ncaa game information for a given game', (done) => {
+            app.ncaaGames.getNcaaInfo(game)
+                .then((data) => {
+                    data.should.exist;
+                    data.should.be.json;
+                    data.should.not.be.empty;
+                    done();
+                })
+        });
+    it('should return a promise for ncaa game box score for a given game', (done) => {
+            app.ncaaGames.getNcaaBoxScore(game)
+                .then((data) => {
+                    data.should.exist;
+                    data.should.be.json;
+                    data.should.not.be.empty;
+                    done();
+                })
+        });
+    it('should return a promise for ncaa game play-by-play for a given game', (done) => {
+            app.ncaaGames.getNcaaPlayByPlay(game)
+                .then((data) => {
+                    data.should.exist;
+                    data.should.be.json;
+                    data.should.not.be.empty;
+                    done();
+                })
+        });
+    it('should return a promise for ncaa game team stats for a given game', (done) => {
+            app.ncaaGames.getNcaaTeamStats(game)
+                .then((data) => {
+                    data.should.exist;
+                    data.should.be.json;
+                    data.should.not.be.empty;
+                    done();
+                })
+        });
+    it('should return a promise for ncaa game scoring summary for a given game', (done) => {
+            app.ncaaGames.getNcaaScoringSummary(game)
+                .then((data) => {
+                    data.should.exist;
+                    data.should.be.json;
+                    data.should.not.be.empty;
+                    done();
+                })
+        });
+});
+
+describe('NCAA Scoreboard', () => {
     it('should return a promise for ncaa scoreboard data for a given date', (done) => {
-        app.ncaa.getNcaaScoreboard({
+        app.ncaaScoreboard.getNcaaScoreboard({
             sport: 'basketball-men',
             division: 'd1',
             year: 2021,
@@ -421,53 +468,7 @@ describe('NCAA', () => {
                 data.should.be.json;
                 data.should.not.be.empty;
                 done();
-            })
-    });
-    it('should return a promise for ncaa game information for a given game', (done) => {
-            app.ncaa.getNcaaGameInfo(game)
-                .then((data) => {
-                    data.should.exist;
-                    data.should.be.json;
-                    data.should.not.be.empty;
-                    done();
-                })
-        });
-    it('should return a promise for ncaa game box score for a given game', (done) => {
-            app.ncaa.getNcaaGameBoxScore(game)
-                .then((data) => {
-                    data.should.exist;
-                    data.should.be.json;
-                    data.should.not.be.empty;
-                    done();
-                })
-        });
-    it('should return a promise for ncaa game play-by-play for a given game', (done) => {
-            app.ncaa.getNcaaGamePlayByPlay(game)
-                .then((data) => {
-                    data.should.exist;
-                    data.should.be.json;
-                    data.should.not.be.empty;
-                    done();
-                })
-        });
-    it('should return a promise for ncaa game team stats for a given game', (done) => {
-            app.ncaa.getNcaaGameTeamStats(game)
-                .then((data) => {
-                    data.should.exist;
-                    data.should.be.json;
-                    data.should.not.be.empty;
-                    done();
-                })
-        });
-    it('should return a promise for ncaa game scoring summary for a given game', (done) => {
-            app.ncaa.getNcaaGameScoringSummary(game)
-                .then((data) => {
-                    data.should.exist;
-                    data.should.be.json;
-                    data.should.not.be.empty;
-                    done();
-                })
-        });
+            });
     });
 });
 describe('NBA Games', () => {

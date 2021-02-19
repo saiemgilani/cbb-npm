@@ -1,34 +1,60 @@
 # cbb-npm
 
-Support for the following data from ESPN's college basketball endpoints and recruiting data from 247Sports:
+Support for the following data from ESPN's endpoints and recruiting data from 247Sports:
+
 - play-by-play (including shot location data when available)
 - scores
 - schedule
 - standings
-- rankings
+- rankings (not available for WNBA/NBA)
 
-College Basketball
-Women's College Basketball
-WNBA
-NBA
-All team sports on the NCAA website
+Recruiting data from 247Sports available for:
 
-# Installation
+- men's college basketball
 
-```
+The following sports are available from ESPN:
+
+- College Basketball
+- Women's College Basketball
+- WNBA
+- NBA
+- All team sports on the NCAA website:
+  - 'football'
+  - 'basketball-men'
+  - 'basketball-women'
+  - 'soccer-men'
+  - 'soccer-women'
+  - 'fieldhockey'
+  - 'volleyball-women'
+  - 'icehockey-men'
+  - 'icehockey-women'
+  - 'baseball'
+  - 'beach-volleyball'
+  - 'lacrosse-men'
+  - 'lacrosse-women'
+  - 'volleyball-men'
+
+## Installation
+
+```bash
 npm install cbb-npm
 ```
 
-# Usage
+## Usage
 
-```
+```js
 const sdv = require('cbb-npm');
 ```
 
-# Examples
-# Men's College Basketball
-## Games
-```
+## Examples
+
+## Men's College Basketball
+
+<details><summary> Examples </summary>
+
+### CBB Games
+
+```js
 const gameId = 401260281;
 
 // get detailed play-by-play data for a game
@@ -39,10 +65,15 @@ const result = await sdv.cbbGames.getBoxScore(gameId);
 
 // get game all game data
 const summary = await sdv.cbbGames.getSummary(gameId);
+
+// get all game pickcenter data
+const picks = await sdv.cbbGames.getPicks(gameId);
+
 ```
 
-## Scores
-```
+### CBB Scores
+
+```js
 const inputs = {
     year: 2021,
     month: 02,
@@ -51,10 +82,11 @@ const inputs = {
 const result = await sdv.cbbScoreboard.getScoreboard(inputs);
 ```
 
-## Schedules
-```
+### CBB Schedules
+
+```js
 const inputs = {
-    groups: 50, // all Div-I games
+    group: 50, // all Div-I games
     year: 2020,
     month: 12,
     day: 02
@@ -62,12 +94,16 @@ const inputs = {
 
 const result = await sdv.cbbSchedule.getSchedule(inputs);
 ```
-## Conferences
-```
+
+### CBB Conferences
+
+```js
 const results = await sdv.cbbScoreboard.getConferences();
 ```
-## Teams
-```
+
+## CBB Teams
+
+```js
 // get list of teams
 const result = await sdv.cbbTeams.getTeamList();
 
@@ -78,8 +114,10 @@ const result = await sdv.cbbTeams.getTeamInfo(teamId);
 // get team roster data
 const result = await sdv.cbbTeams.getTeamPlayers(teamId);
 ```
-## Rankings
-```
+
+## CBB Rankings
+
+```js
 // get rankings
 const inputs = {
     year: 2020,
@@ -88,8 +126,10 @@ const inputs = {
 
 const result = await sdv.cbbRankings.getRankings(inputs);
 ```
-## Standings
-```
+
+## CBB Standings
+
+```js
 // get standings
 const inputs = {
     year: 2020
@@ -97,8 +137,10 @@ const inputs = {
 
 const result = await sdv.cbbStandings.getStandings(inputs);
 ```
-## Recruiting
-```
+
+## CBB Recruiting
+
+```js
 // get recruiting data from 247Composite
 // get player rankings
 const result = await sdv.cbbRecruiting.getPlayerRankings({
@@ -122,9 +164,15 @@ const result = await sdv.cbbRecruiting.getSchoolRankings(2021);
 const result = await sdv.cbbRecruiting.getSchoolCommits('floridastate', 2020);
 ```
 
-# Women's College Basketball
-## Games
-```
+</details>
+
+## Women's College Basketball
+
+<details><summary> Examples </summary>
+
+### WBB Games
+
+```js
 const gameId = 401260281;
 
 // get detailed play-by-play data for a game
@@ -137,8 +185,9 @@ const result = await sdv.wbbGames.getBoxScore(gameId);
 const summary = await sdv.wbbGames.getSummary(gameId);
 ```
 
-## Scores
-```
+### WBB Scores
+
+```js
 const inputs = {
     year: 2021,
     month: 02,
@@ -147,10 +196,11 @@ const inputs = {
 const result = await sdv.wbbScoreboard.getScoreboard(inputs);
 ```
 
-## Schedules
-```
+### WBB Schedules
+
+```js
 const inputs = {
-    groups: 51, // all Div-I games
+    group: 50, // all Div-I games
     year: 2020,
     month: 12,
     day: 02
@@ -158,12 +208,16 @@ const inputs = {
 
 const result = await sdv.wbbSchedule.getSchedule(inputs);
 ```
-## Conferences
-```
+
+### WBB Conferences
+
+```js
 const results = await sdv.wbbScoreboard.getConferences();
 ```
-## Teams
-```
+
+### WBB Teams
+
+```js
 // get list of teams
 const result = await sdv.wbbTeams.getTeamList();
 
@@ -174,8 +228,10 @@ const result = await sdv.wbbTeams.getTeamInfo(teamId);
 // get team roster data
 const result = await sdv.wbbTeams.getTeamPlayers(teamId);
 ```
-# Rankings
-```
+
+### WBB Rankings
+
+```js
 // get rankings
 const inputs = {
     year: 2020,
@@ -184,8 +240,10 @@ const inputs = {
 
 const result = await sdv.wbbRankings.getRankings(inputs);
 ```
-# Standings
-```
+
+### WBB Standings
+
+```js
 // get standings
 const inputs = {
     year: 2020
@@ -193,40 +251,62 @@ const inputs = {
 
 const result = await sdv.wbbStandings.getStandings(inputs);
 ```
-# NCAA Data
-```
+
+</details>
+
+## NCAA Data
+
+<details><summary> Examples </summary>
+
+### NCAA Scoreboard
+
+```js
 // acceptable sport names:
-// ['basketball-women','soccer-men','soccer-women','fieldhockey',
-//  'volleyball-women','icehockey-men','icehockey-women','baseball',
-//  'beach-volleyball', 'lacrosse-men','lacrosse-women', 'volleyball-men']
-// get ncaa scoreboard data for sport from above list(default: 'basketball-men')
-const result = await sdv.ncaa.getNcaaScoreboard({
+// ['football' ,'basketball-men', 'basketball-women',
+//  'soccer-men','soccer-women','fieldhockey',
+//  'volleyball-women','beach-volleyball',
+//  'icehockey-men','icehockey-women',
+//  'baseball',  'volleyball-men',
+//  'lacrosse-men', 'lacrosse-women']
+// get ncaa scoreboard data for sport from above list
+// (default: 'basketball-men')
+const result = await sdv.ncaaScoreboard.getNcaaScoreboard({
     sport = 'basketball-men',
     division = 'd1', // 'fbs' for football
     year = 2020,
     month = null,
     day = null
 })
+```
+
+### NCAA Games
+
+```js
 // NCAA game information for a given game id
-const result = await sdv.ncaa.getNcaaGameInfo(5764053);
+const result = await sdv.ncaaGame.getNcaaInfo(5764053);
 
 // NCAA box score for a given game id
-const result = await sdv.ncaa.getNcaaGameBoxScore(5764053);
+const result = await sdv.ncaaGame.getNcaaBoxScore(5764053);
 
 // NCAA play-by-play for a given game id
-const result = await sdv.ncaa.getNcaaGamePlayByPlay(5764053);
+const result = await sdv.ncaaGame.getNcaaPlayByPlay(5764053);
 
 // NCAA game team stats for a given game
-const result = await sdv.ncaa.getNcaaGameTeamStats(5764053);
+const result = await sdv.ncaaGame.getNcaaTeamStats(5764053);
 
 // NCAA game scoring summary for a given game
-const result = await sdv.ncaa.getNcaaGameScoringSummary(5764053);
+const result = await sdv.ncaaGame.getNcaaScoringSummary(5764053);
 ```
 
+</details>
 
-# NBA
-## Games
-```
+## NBA
+
+<details><summary> Examples </summary>
+
+### NBA Games
+
+```js
 const gameId = 401283399;
 
 // get detailed play-by-play data for a game
@@ -237,10 +317,15 @@ const result = await sdv.nbaGames.getBoxScore(gameId);
 
 // get game all game data
 const summary = await sdv.nbaGames.getSummary(gameId);
+
+// get all game pickcenter data
+const picks = await sdv.nbaGames.getPicks(gameId);
+
 ```
 
-## Scores
-```
+### NBA Scores
+
+```js
 const inputs = {
     year: 2021,
     month: 02,
@@ -249,10 +334,11 @@ const inputs = {
 const result = await sdv.nbaScoreboard.getScoreboard(inputs);
 ```
 
-## Schedules
-```
+### NBA Schedules
+
+```js
 const inputs = {
-    groups: 46, // all Div-I games
+    group: 46, // nba group code
     year: 2020,
     month: 12,
     day: 02
@@ -260,24 +346,30 @@ const inputs = {
 
 const result = await sdv.nbaSchedule.getSchedule(inputs);
 ```
-## Conferences
-```
+
+### NBA Conferences
+
+```js
 const results = await sdv.nbaScoreboard.getConferences();
 ```
-## Teams
-```
+
+### NBA Teams
+
+```js
 // get list of teams
 const result = await sdv.nbaTeams.getTeamList();
 
 // get individual team data
-const teamId = "por";
+const teamId = 16;
 const result = await sdv.nbaTeams.getTeamInfo(teamId);
 
 // get team roster data
 const result = await sdv.nbaTeams.getTeamPlayers(teamId);
 ```
-# Standings
-```
+
+### NBA Standings
+
+```js
 // get standings
 const inputs = {
     year: 2020
@@ -286,9 +378,15 @@ const inputs = {
 const result = await sdv.nbaStandings.getStandings(inputs);
 ```
 
-# WNBA
-## Games
-```
+</details>
+
+## WNBA
+
+<details><summary> Examples </summary>
+
+### WNBA Games
+
+```js
 const gameId = 401244185;
 
 // get detailed play-by-play data for a game
@@ -301,8 +399,9 @@ const result = await sdv.wnbaGames.getBoxScore(gameId);
 const summary = await sdv.wnbaGames.getSummary(gameId);
 ```
 
-## Scores
-```
+### WNBA Scores
+
+```js
 const inputs = {
     year: 2021,
     month: 02,
@@ -311,10 +410,11 @@ const inputs = {
 const result = await sdv.wnbaScoreboard.getScoreboard(inputs);
 ```
 
-## Schedules
-```
+### WNBA Schedules
+
+```js
 const inputs = {
-    groups: 54, // all Div-I games
+    group: 59, // wnba group code
     year: 2020,
     month: 12,
     day: 02
@@ -322,24 +422,30 @@ const inputs = {
 
 const result = await sdv.wnbaSchedule.getSchedule(inputs);
 ```
-## Conferences
-```
+
+### WNBA Conferences
+
+```js
 const results = await sdv.wnbaScoreboard.getConferences();
 ```
-## Teams
-```
+
+### WNBA Teams
+
+```js
 // get list of teams
 const result = await sdv.wnbaTeams.getTeamList();
 
 // get individual team data
-const teamId = "sea";
+const teamId = 14;
 const result = await sdv.wnbaTeams.getTeamInfo(teamId);
 
 // get team roster data
 const result = await sdv.wnbaTeams.getTeamPlayers(teamId);
 ```
-# Standings
-```
+
+### WNBA Standings
+
+```js
 // get standings
 const inputs = {
     year: 2020
@@ -347,3 +453,85 @@ const inputs = {
 
 const result = await sdv.wnbaStandings.getStandings(inputs);
 ```
+
+</details>
+
+## NFL
+
+<details><summary> Examples </summary>
+
+### NFL Games
+
+```js
+const gameId = 401220403;
+
+// get detailed play-by-play data for a game
+const result = await sdv.nflGames.getPlayByPlay(gameId);
+
+// get box score
+const box = await sdv.nflGames.getBoxScore(gameId);
+
+// get all game data
+const summary = await sdv.nflGames.getSummary(gameId);
+
+// get all game pickcenter data
+const picks = await sdv.nflGames.getPicks(gameId);
+
+```
+
+### NFL Scores
+
+```js
+const inputs = {
+    year: 2021,
+    month: 02,
+    day: 07
+};
+const result = await sdv.nflScoreboard.getScoreboard(inputs);
+```
+
+### NFL Schedules
+
+```js
+const inputs = {
+    group: 20, // nfl group code
+    year: 2021,
+    month: 02,
+    day: 07
+};
+
+const result = await sdv.nflSchedule.getSchedule(inputs);
+```
+
+### NFL Conferences
+
+```js
+const results = await sdv.nflScoreboard.getConferences();
+```
+
+### NFL Teams
+
+```js
+// get list of teams
+const result = await sdv.nflTeams.getTeamList();
+
+// get individual team data
+const teamId = 27;
+const result = await sdv.nflTeams.getTeamInfo(teamId);
+
+// get team roster data
+const result = await sdv.nflTeams.getTeamPlayers(teamId);
+```
+
+### NFL Standings
+
+```js
+// get standings
+const inputs = {
+    year: 2020
+};
+
+const result = await sdv.nflStandings.getStandings(inputs);
+```
+
+</details>

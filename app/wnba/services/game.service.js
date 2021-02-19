@@ -19,7 +19,6 @@ exports.getPlayByPlay = async (id) => {
         plays: res.data.gamepackageJSON.plays,
         competitions: res.data.gamepackageJSON.header.competitions,
         season: res.data.gamepackageJSON.header.season,
-        week: res.data.gamepackageJSON.header.week,
         boxScore: res.data.gamepackageJSON.boxscore,
         seasonSeries: res.data.gamepackageJSON.seasonseries,
         standings: res.data.gamepackageJSON.standings
@@ -67,7 +66,6 @@ exports.getSummary = async (id) => {
         leaders: res.data.leaders,
         competitions: res.data.gamepackageJSON.header.competitions,
         season: res.data.gamepackageJSON.header.season,
-        week: res.data.gamepackageJSON.header.week,
         seasonSeries: res.data.gamepackageJSON.seasonseries,
         standings: res.data.gamepackageJSON.standings
     };

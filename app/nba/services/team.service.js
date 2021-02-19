@@ -1,11 +1,11 @@
 const axios = require('axios');
 
 const getTeamList = async ({
-    groups = 46
+    group = 46
 }) => {
     const baseUrl = 'http://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams';
     const params = {
-        groups,
+        group,
         limit: 1000
     };
 

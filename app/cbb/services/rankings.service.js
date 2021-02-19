@@ -2,27 +2,22 @@ const axios = require('axios');
 
 exports.getRankings = async ({
     year = null,
-    week = null,
-    seasontype = null
+    week = null
 }) => {
-    const baseUrl = 'http://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/rankings';
+    const baseUrl = 'http://cdn.espn.com/core/mens-college-basketball/rankings?';
     const qs = {};
 
     if (year) {
-        qs.seasons = year;
+        qs.year = year;
     }
 
     if (week) {
-        qs.weeks = week;
-    }
-
-    if (seasontype) {
-        qs.types = seasontype;
+        qs.week = week;
     }
 
     const res = await axios.get(baseUrl, {
         params: qs
     });
 
-    return res.data;
+    return res.content.data;
 };

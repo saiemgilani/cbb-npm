@@ -1,10 +1,16 @@
 const axios = require('axios');
 
-exports.getScoreboard = async ({year = null, month = null, day = null, groups = 59, seasontype = null, limit = 300}) => {
+exports.getScoreboard = async ({
+    year = null,
+    month = null,
+    day = null,
+    group = 59,
+    seasontype = null,
+    limit = 300}) => {
     const baseUrl = 'http://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard';
     const params = {
         dates: year+""+month+""+day,
-        groups,
+        group,
         seasontype,
         limit
     };

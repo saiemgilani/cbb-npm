@@ -1,11 +1,11 @@
 const axios = require('axios');
 
 const getTeamList = async ({
-    groups = 46
+    group = 59
 }) => {
-    const baseUrl = 'http://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams';
+    const baseUrl = 'http://site.api.espn.com/apis/site/v2/sports/basketball/wnba/teams';
     const params = {
-        groups,
+        group,
         limit: 1000
     };
 
@@ -17,14 +17,14 @@ const getTeamList = async ({
 }
 
 const getTeamInfo = async (id) => {
-    const baseUrl = `http://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/${id}`;
+    const baseUrl = `http://site.api.espn.com/apis/site/v2/sports/basketball/wnba/teams/${id}`;
 
     const res = await axios.get(baseUrl);
     return res.data;
 }
 
 const getTeamPlayers = async (id) => {
-    const baseUrl = `http://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/${id}`;
+    const baseUrl = `http://site.api.espn.com/apis/site/v2/sports/basketball/wnba/teams/${id}`;
     const params = {
         enable: "roster"
     };

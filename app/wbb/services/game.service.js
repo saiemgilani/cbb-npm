@@ -14,12 +14,11 @@ exports.getPlayByPlay = async (id) => {
     });
 
     return {
-        teams: res.data.gamepackageJSON.header.competitions[0].competitors,
         id: res.data.gamepackageJSON.header.id,
+        teams: res.data.gamepackageJSON.header.competitions[0].competitors,
         plays: res.data.gamepackageJSON.plays,
         competitions: res.data.gamepackageJSON.header.competitions,
         season: res.data.gamepackageJSON.header.season,
-        week: res.data.gamepackageJSON.header.week,
         boxScore: res.data.gamepackageJSON.boxscore
     };
 };

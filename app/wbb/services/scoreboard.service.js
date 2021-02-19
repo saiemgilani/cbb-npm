@@ -1,11 +1,18 @@
 const axios = require('axios');
 
-exports.getScoreboard = async ({year = null, month = null, day = null, groups = 54, seasontype = null, limit = 300}) => {
+exports.getScoreboard = async ({
+    year = null,
+    month = null,
+    day = null,
+    group = 50,
+    seasontype = null,
+    limit = 300
+}) => {
     const baseUrl = 'http://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/scoreboard';
     const params = {
         dates: year+""+month+""+day,
-        groups,
-        seasontype,
+        group: group,
+        seasontype: seasontype,
         limit
     };
 
