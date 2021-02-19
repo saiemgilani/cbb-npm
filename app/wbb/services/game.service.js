@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 exports.getPlayByPlay = async (id) => {
-    const baseUrl = 'http://cdn.espn.com/core/mens-college-basketball/playbyplay';
+    const baseUrl = 'http://cdn.espn.com/core/womens-college-basketball/playbyplay';
     const params = {
         gameId: id,
         xhr: 1,
@@ -25,7 +25,7 @@ exports.getPlayByPlay = async (id) => {
 };
 
 exports.getBoxScore = async (id) => {
-    const baseUrl = 'http://cdn.espn.com/core/mens-college-basketball/boxscore';
+    const baseUrl = 'http://cdn.espn.com/core/womens-college-basketball/boxscore';
     const params = {
         gameId: id,
         xhr: 1,
@@ -45,7 +45,7 @@ exports.getBoxScore = async (id) => {
 };
 
 exports.getSummary = async (id) => {
-    const baseUrl = 'http://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/summary';
+    const baseUrl = 'http://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/summary';
     const params = {
         event: id
     };
@@ -54,5 +54,14 @@ exports.getSummary = async (id) => {
         params
     });
 
-    return res.data;
+    return {
+        boxScore: res.data.boxscore,
+        gameInfo: res.data.gameInfo,
+        leaders: res.data.leaders,
+        winProbability: res.data.winprobability,
+        header: res.data.header,
+        plays: res.data.plays,
+        standings: res.data.standings
+
+    };
 };
