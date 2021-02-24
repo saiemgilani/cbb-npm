@@ -5,13 +5,12 @@ exports.getScoreboard = async ({
     month = null,
     day = null,
     group = 20,
-    seasontype = null,
+    seasontype = 2,
     limit = 300
 }) => {
-    const baseUrl = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard';
+    const baseUrl = `http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=${year}${parseInt(month) <= 9 ? "0" + month : month}${parseInt(day) <= 9 ? "0" + day : day}`;
     const params = {
-        dates: year+""+month+""+day,
-        group: group,
+        groups: group,
         seasontype,
         limit
     };

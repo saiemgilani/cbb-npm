@@ -4,13 +4,12 @@ const getSchedule = async ({
     year = null,
     month = null,
     day = null,
-    group = 20,
-    seasontype = null
+    groups = 20,
+    seasontype = 2
 }) => {
-    const baseUrl = 'http://cdn.espn.com/core/nfl/schedule';
+    const baseUrl = `http://cdn.espn.com/core/nfl/schedule?dates=${year}${parseInt(month) <= 9 ? "0" + month : month}${parseInt(day) <= 9 ? "0" + day : day}`;
     const params = {
-        dates: year+""+month+""+day,
-        group: group,
+        groups: groups,
         seasontype: seasontype,
         xhr: 1
     };
